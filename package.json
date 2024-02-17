@@ -10,8 +10,10 @@
     "check:apply": "npx @biomejs/biome check --apply"
   },
   "dependencies": {
+    "@types/react-color": "^3.0.11",
     "next": "14.1.0",
     "react": "^18",
+    "react-color": "^2.19.3",
     "react-dom": "^18"
   },
   "devDependencies": {

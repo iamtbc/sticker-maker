@@ -1,0 +1,7 @@
+pre-commit:
+  parallel: true
+  commands:
+    biome:
+      glob: "*.{js,ts,jsx,tsx}"
+      run: npm run check:apply {staged_files}
+      stage_fixed: true

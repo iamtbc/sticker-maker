@@ -1,8 +1,12 @@
 const Header = () => {
   return (
-    <header className="container flex flex-col items-start justify-between space-y-2 py-4 sm:flex-row sm:items-center sm:space-y-0 md:h-16">
-      <h2 className="text-lg font-semibold">StickerMaker</h2>
-    </header>
+    <>
+      <header className="py-6 md:px-8 border-b">
+        <div className="container flex flex-col items-center justify-between md:flex-row">
+          <h2 className="text-lg font-semibold">StickerMaker</h2>
+        </div>
+      </header>
+    </>
   );
 };
 

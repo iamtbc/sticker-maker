@@ -17,6 +17,7 @@ import {
   MdAlignVerticalCenter,
   MdAlignVerticalTop,
 } from "react-icons/md";
+import { Footer } from "./_components/Footer";
 import { Header } from "./_components/Header";
 
 import { Button } from "@/components/ui/button";
@@ -355,6 +356,8 @@ export default function Editor() {
           </div>
         </div>
       </main>
+      <div className="shirink-0 bg-border h-[1px] w-full" />
+      <Footer />
     </>
   );
 }

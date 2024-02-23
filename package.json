@@ -7,12 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "check:apply": "npx @biomejs/biome check --apply"
+    "check": "npx @biomejs/biome check --apply",
+    "check!": "npx @biomejs/biome check --apply-unsafe"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-tabs": "^1.0.4",
     "@types/react-color": "^3.0.11",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",

@@ -17,8 +17,6 @@ import {
   MdAlignVerticalCenter,
   MdAlignVerticalTop,
 } from "react-icons/md";
-import { Footer } from "./_components/Footer";
-import { Header } from "./_components/Header";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -77,8 +75,6 @@ export default function Editor() {
 
   return (
     <>
-      <Header />
-      <div className="shirink-0 bg-border h-[1px] w-full" />
       <main className="container h-full py-6">
         <div className="grid grid-cols-2 gap-x-4">
           {/* Left Column*/}
@@ -356,8 +352,6 @@ export default function Editor() {
           </div>
         </div>
       </main>
-      <div className="shirink-0 bg-border h-[1px] w-full" />
-      <Footer />
     </>
   );
 }

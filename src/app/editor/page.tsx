@@ -1,9 +1,10 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as React from "react";
 import { useForm } from "react-hook-form";
 
 import { z } from "zod";
+
+import { toPng } from "html-to-image";
 
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -42,9 +43,6 @@ const formSchema = z.object({
 });
 
 export default function Editor() {
-  const [size, setSize] = React.useState("128");
-  const [fontSize, setFontSize] = React.useState("16");
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -61,8 +59,19 @@ export default function Editor() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      const node = document.getElementById("sticker");
+      if (!node) return;
+
+      const dataUrl = await toPng(node);
+      const link = document.createElement("a");
+      link.href = dataUrl;
+      link.download = "sticker.png";
+      link.click();
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
@@ -74,6 +83,7 @@ export default function Editor() {
           {/* Left Column*/}
           <div className="rounded-md border bg-muted flex justify-center items-center">
             <div
+              id="sticker"
               style={{
                 display: "flex",
                 alignItems: form.watch("alignItems"),
@@ -85,7 +95,7 @@ export default function Editor() {
               }}
             >
               <span
-                className="whitespace-break-spaces"
+                className="whitespace-break-spaces min-w-fit"
                 style={{
                   fontWeight: form.watch("fontWeight"),
                   fontSize: `${form.watch("fontSize") || 0}px`,

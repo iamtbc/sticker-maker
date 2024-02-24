@@ -22,12 +22,98 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+          <div className="flex flex-wrap gap-4">
             <Image
-              src="/sticker-awesome.png"
-              alt="hero"
-              width="720"
-              height="600"
+              src="/sticker-awesome.svg"
+              alt="awesome"
+              width="200"
+              height="100"
+            />
+            <Image src="/sticker-100.svg" alt="100" width="100" height="100" />
+            <Image
+              src="/sticker-nice.svg"
+              alt="nice"
+              width="100"
+              height="100"
+            />
+            <Image src="/sticker-wow.svg" alt="wow" width="100" height="100" />
+            <Image
+              src="/sticker-supercool.svg"
+              alt="super-cool"
+              width="100"
+              height="100"
+            />
+            <Image
+              src="/sticker-pien.svg"
+              alt="pien"
+              width="100"
+              height="100"
+            />
+            <Image
+              src="/sticker-ohmygod.svg"
+              alt="oh-my-god"
+              width="100"
+              height="100"
+            />
+            <Image
+              src="/sticker-heart.svg"
+              alt="heart"
+              width="100"
+              height="100"
+            />
+            <Image
+              src="/sticker-perfect.svg"
+              alt="perfect"
+              width="100"
+              height="100"
+            />
+            <Image
+              src="/sticker-cool.svg"
+              alt="cool"
+              width="100"
+              height="100"
+            />
+            <Image
+              src="/sticker-suteki.svg"
+              alt="suteki"
+              width="200"
+              height="100"
+            />
+            <Image
+              src="/sticker-bravo.svg"
+              alt="bravo"
+              width="100"
+              height="100"
+            />
+            <Image
+              src="/sticker-wink.svg"
+              alt="wink"
+              width="100"
+              height="100"
+            />
+            <Image
+              src="/sticker-unbelievable.svg"
+              alt="unbelievable"
+              width="200"
+              height="100"
+            />
+            <Image
+              src="/sticker-brilliant.svg"
+              alt="brilliant sticker"
+              width="100"
+              height="100"
+            />
+            <Image
+              src="/sticker-good.svg"
+              alt="good"
+              width="100"
+              height="100"
+            />
+            <Image
+              src="/sticker-kanpeki.svg"
+              alt="完璧"
+              width="100"
+              height="100"
             />
           </div>
         </div>

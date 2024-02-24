@@ -219,7 +219,7 @@ export default function Editor() {
                           <RxWidth /> Width
                         </FormLabel>
                         <FormControl>
-                          <Input type="number" max={256} min={24} {...field} />
+                          <Input type="number" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -235,7 +235,7 @@ export default function Editor() {
                           <RxHeight /> Height
                         </FormLabel>
                         <FormControl>
-                          <Input type="number" max={256} min={24} {...field} />
+                          <Input type="number" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>

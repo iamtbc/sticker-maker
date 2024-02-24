@@ -28,7 +28,20 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-import { CgFontHeight, CgFontSpacing } from "react-icons/cg";
+import {
+  CgColorBucket,
+  CgFontHeight,
+  CgFontSpacing,
+  CgFormatColor,
+} from "react-icons/cg";
+import {
+  RxCornerTopLeft,
+  RxFontBold,
+  RxFontSize,
+  RxHeight,
+  RxText,
+  RxWidth,
+} from "react-icons/rx";
 
 const formSchema = z.object({
   alignItems: z.string(),
@@ -185,8 +198,10 @@ export default function Editor() {
                     control={form.control}
                     name="width"
                     render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Width</FormLabel>
+                      <FormItem className="flex-1">
+                        <FormLabel className="flex gap-2">
+                          <RxWidth /> Width
+                        </FormLabel>
                         <FormControl>
                           <Input type="number" max={256} min={24} {...field} />
                         </FormControl>
@@ -199,8 +214,10 @@ export default function Editor() {
                     control={form.control}
                     name="height"
                     render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Height</FormLabel>
+                      <FormItem className="flex-1">
+                        <FormLabel className="flex gap-2">
+                          <RxHeight /> Height
+                        </FormLabel>
                         <FormControl>
                           <Input type="number" max={256} min={24} {...field} />
                         </FormControl>
@@ -213,8 +230,11 @@ export default function Editor() {
                     control={form.control}
                     name="borderRadius"
                     render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Border Radius</FormLabel>
+                      <FormItem className="flex-1">
+                        <FormLabel className="flex gap-2">
+                          <RxCornerTopLeft />
+                          Border Radius
+                        </FormLabel>
                         <FormControl>
                           <Input type="number" {...field} />
                         </FormControl>
@@ -230,7 +250,10 @@ export default function Editor() {
                   name="text"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Text</FormLabel>
+                      <FormLabel className="flex gap-2">
+                        <RxText />
+                        Text
+                      </FormLabel>
                       <FormControl>
                         <Textarea {...field} />
                       </FormControl>
@@ -245,7 +268,10 @@ export default function Editor() {
                   name="fontWeight"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Font Weight</FormLabel>
+                      <FormLabel className="flex gap-2">
+                        <RxFontBold />
+                        Font Weight
+                      </FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -266,7 +292,10 @@ export default function Editor() {
                   name="fontSize"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Font Size</FormLabel>
+                      <FormLabel className="flex gap-2">
+                        <RxFontSize />
+                        Font Size
+                      </FormLabel>
                       <FormControl>
                         <Input type="number" {...field} />
                       </FormControl>
@@ -317,7 +346,10 @@ export default function Editor() {
                   name="color"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Color</FormLabel>
+                      <FormLabel className="flex gap-2">
+                        <CgFormatColor />
+                        Color
+                      </FormLabel>
                       <div className="flex">
                         <FormControl>
                           <Input
@@ -356,7 +388,10 @@ export default function Editor() {
                   name="backgroundColor"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Background Color</FormLabel>
+                      <FormLabel className="flex gap-2">
+                        <CgColorBucket />
+                        Background Color
+                      </FormLabel>
                       <div className="flex">
                         <FormControl>
                           <Input

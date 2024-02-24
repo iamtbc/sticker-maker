@@ -40,6 +40,9 @@ import {
   RxFontSize,
   RxHeight,
   RxText,
+  RxTextAlignCenter,
+  RxTextAlignLeft,
+  RxTextAlignRight,
   RxWidth,
 } from "react-icons/rx";
 
@@ -49,6 +52,7 @@ const formSchema = z.object({
   width: z.coerce.number(),
   height: z.preprocess((v) => Number(v), z.number()),
   text: z.string(),
+  textAlign: z.string(),
   fontWeight: z.preprocess((v) => Number(v), z.number()),
   fontSize: z.preprocess((v) => Number(v), z.number()),
   lineHeight: z.preprocess((v) => Number(v), z.number()),
@@ -67,6 +71,7 @@ export default function Editor() {
       width: 128,
       height: 128,
       text: "Awesome😎",
+      textAlign: "center",
       fontWeight: 400,
       fontSize: 16,
       lineHeight: 1,
@@ -114,6 +119,10 @@ export default function Editor() {
               <span
                 className="whitespace-break-spaces min-w-fit"
                 style={{
+                  textAlign: form.watch("textAlign") as
+                    | "start"
+                    | "center"
+                    | "end",
                   fontWeight: form.watch("fontWeight"),
                   fontSize: `${form.watch("fontSize") || 0}px`,
                   color: form.watch("color"),
@@ -257,6 +266,39 @@ export default function Editor() {
                       </FormLabel>
                       <FormControl>
                         <Textarea {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {/* textAlign */}
+                <FormField
+                  control={form.control}
+                  name="textAlign"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="flex gap-2">
+                        <RxTextAlignCenter />
+                        Text Align
+                      </FormLabel>
+                      <FormControl>
+                        <Tabs
+                          value={field.value}
+                          onValueChange={field.onChange}
+                        >
+                          <TabsList>
+                            <TabsTrigger value="start">
+                              <RxTextAlignLeft />
+                            </TabsTrigger>
+                            <TabsTrigger value="center">
+                              <RxTextAlignCenter />
+                            </TabsTrigger>
+                            <TabsTrigger value="end">
+                              <RxTextAlignRight />
+                            </TabsTrigger>
+                          </TabsList>
+                        </Tabs>
                       </FormControl>
                       <FormMessage />
                     </FormItem>

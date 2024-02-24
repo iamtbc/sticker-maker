@@ -28,6 +28,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
+import { CgFontHeight, CgFontSpacing } from "react-icons/cg";
+
 const formSchema = z.object({
   alignItems: z.string(),
   justifyContent: z.string(),
@@ -36,6 +38,8 @@ const formSchema = z.object({
   text: z.string(),
   fontWeight: z.preprocess((v) => Number(v), z.number()),
   fontSize: z.preprocess((v) => Number(v), z.number()),
+  lineHeight: z.preprocess((v) => Number(v), z.number()),
+  letterSpacing: z.preprocess((v) => Number(v), z.number()),
   color: z.string(),
   backgroundColor: z.string(),
   borderRadius: z.preprocess((v) => Number(v), z.number()),
@@ -52,6 +56,8 @@ export default function Editor() {
       text: "Awesome😎",
       fontWeight: 400,
       fontSize: 16,
+      lineHeight: 1,
+      letterSpacing: 0,
       color: "#ffffff",
       backgroundColor: "#000000",
       borderRadius: 8,
@@ -97,6 +103,8 @@ export default function Editor() {
                   fontWeight: form.watch("fontWeight"),
                   fontSize: `${form.watch("fontSize") || 0}px`,
                   color: form.watch("color"),
+                  lineHeight: form.watch("lineHeight"),
+                  letterSpacing: `${form.watch("letterSpacing") || 0}px`,
                 }}
               >
                 {form.watch("text")}
@@ -261,6 +269,42 @@ export default function Editor() {
                       <FormLabel>Font Size</FormLabel>
                       <FormControl>
                         <Input type="number" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {/* lineHight */}
+                <FormField
+                  control={form.control}
+                  name="lineHeight"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="flex gap-2">
+                        <CgFontHeight />
+                        Font Height
+                      </FormLabel>
+                      <FormControl>
+                        <Input type="number" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {/* letterSpacing */}
+                <FormField
+                  control={form.control}
+                  name="letterSpacing"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="flex gap-2">
+                        <CgFontSpacing />
+                        Font Spacing
+                      </FormLabel>
+                      <FormControl>
+                        <Input type="number" className="mt-0" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>

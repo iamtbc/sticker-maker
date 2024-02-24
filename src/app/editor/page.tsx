@@ -1,10 +1,11 @@
 "use client";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
 import { z } from "zod";
 
-import { toPng } from "html-to-image";
+import { toJpeg, toPng, toSvg } from "html-to-image";
 
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -20,6 +21,15 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
+import { Command, CommandGroup, CommandItem } from "@/components/ui/command";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Separator } from "@/components/ui/separator";
+import { cn } from "@/lib/utils";
+import { Check, ChevronsUpDown } from "lucide-react";
 import {
   CgColorBucket,
   CgFontHeight,
@@ -34,6 +44,7 @@ import {
   RxAlignRight,
   RxAlignTop,
   RxCornerTopLeft,
+  RxDownload,
   RxFontBold,
   RxFontSize,
   RxHeight,
@@ -58,7 +69,14 @@ const formSchema = z.object({
   color: z.string(),
   backgroundColor: z.string(),
   borderRadius: z.preprocess((v) => Number(v), z.number()),
+  format: z.string(),
 });
+
+const formats = [
+  { label: "PNG", value: "png" },
+  { label: "JPEG", value: "jpeg" },
+  { label: "SVG", value: "svg" },
+];
 
 export default function Editor() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -77,6 +95,7 @@ export default function Editor() {
       color: "#ffffff",
       backgroundColor: "#000000",
       borderRadius: 8,
+      format: "png",
     },
   });
 
@@ -85,10 +104,18 @@ export default function Editor() {
       const node = document.getElementById("sticker");
       if (!node) return;
 
-      const dataUrl = await toPng(node);
+      const format = form.getValues("format");
+      const fn = {
+        png: toPng,
+        jpeg: toJpeg,
+        svg: toSvg,
+      }[format as "png" | "jpeg" | "svg"];
+      if (!fn) return;
+
+      const dataUrl = await fn(node);
       const link = document.createElement("a");
       link.href = dataUrl;
-      link.download = "sticker.png";
+      link.download = `sticker.${format}`;
       link.click();
     } catch (error) {
       console.error(error);
@@ -103,7 +130,6 @@ export default function Editor() {
           <div className="rounded-md border bg-muted flex justify-center items-center">
             <div
               id="sticker"
-              className="absolute"
               style={{
                 display: "flex",
                 alignItems: form.watch("alignItems"),
@@ -472,9 +498,70 @@ export default function Editor() {
                   )}
                 />
 
-                <Button type="submit" className="w-full">
-                  Download
-                </Button>
+                <Separator className="" />
+
+                {/* format */}
+                <FormField
+                  control={form.control}
+                  name="format"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="flex gap-2">Save as ...</FormLabel>
+
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <FormControl>
+                            <Button
+                              type="button"
+                              variant="outline"
+                              role="combobox"
+                              className="w-full"
+                            >
+                              {field.value
+                                ? formats.find(
+                                    (format) => format.value === field.value,
+                                  )?.label
+                                : "Select format"}
+
+                              <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                            </Button>
+                          </FormControl>
+                        </PopoverTrigger>
+                        <PopoverContent className="p-0">
+                          <Command>
+                            <CommandGroup>
+                              {formats.map((format) => (
+                                <CommandItem
+                                  value={format.label}
+                                  key={format.value}
+                                  onSelect={() => {
+                                    form.setValue("format", format.value);
+                                  }}
+                                >
+                                  <Check
+                                    className={cn(
+                                      "mr-2 h-4 w-4",
+                                      format.value === field.value
+                                        ? "opacity-100"
+                                        : "opacity-0",
+                                    )}
+                                  />
+                                  {format.label}
+                                </CommandItem>
+                              ))}
+                            </CommandGroup>
+                          </Command>
+                        </PopoverContent>
+                      </Popover>
+                    </FormItem>
+                  )}
+                />
+                <div className="flex justify-center">
+                  <Button type="submit" className="rounded-full w-full h-14">
+                    <RxDownload className="mr-2" />
+                    Download
+                  </Button>
+                </div>
               </form>
             </Form>
           </div>

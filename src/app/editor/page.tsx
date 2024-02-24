@@ -100,6 +100,7 @@ export default function Editor() {
           <div className="rounded-md border bg-muted flex justify-center items-center">
             <div
               id="sticker"
+              className="absolute"
               style={{
                 display: "flex",
                 alignItems: form.watch("alignItems"),

@@ -9,14 +9,6 @@ import { toPng } from "html-to-image";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  MdAlignHorizontalCenter,
-  MdAlignHorizontalLeft,
-  MdAlignHorizontalRight,
-  MdAlignVerticalBottom,
-  MdAlignVerticalCenter,
-  MdAlignVerticalTop,
-} from "react-icons/md";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -35,6 +27,12 @@ import {
   CgFormatColor,
 } from "react-icons/cg";
 import {
+  RxAlignBottom,
+  RxAlignCenterHorizontally,
+  RxAlignCenterVertically,
+  RxAlignLeft,
+  RxAlignRight,
+  RxAlignTop,
   RxCornerTopLeft,
   RxFontBold,
   RxFontSize,
@@ -149,6 +147,10 @@ export default function Editor() {
                     name="justifyContent"
                     render={({ field }) => (
                       <FormItem>
+                        <FormLabel className="flex gap-2">
+                          <RxAlignCenterHorizontally />
+                          Align Horizontally
+                        </FormLabel>
                         <FormControl>
                           <Tabs
                             value={field.value}
@@ -156,13 +158,13 @@ export default function Editor() {
                           >
                             <TabsList>
                               <TabsTrigger value="start">
-                                <MdAlignHorizontalLeft />
+                                <RxAlignLeft />
                               </TabsTrigger>
                               <TabsTrigger value="center">
-                                <MdAlignHorizontalCenter />
+                                <RxAlignCenterHorizontally />
                               </TabsTrigger>
                               <TabsTrigger value="end">
-                                <MdAlignHorizontalRight />
+                                <RxAlignRight />
                               </TabsTrigger>
                             </TabsList>
                           </Tabs>
@@ -178,6 +180,10 @@ export default function Editor() {
                     name="alignItems"
                     render={({ field }) => (
                       <FormItem>
+                        <FormLabel className="flex gap-2">
+                          <RxAlignCenterVertically />
+                          Align Vertically
+                        </FormLabel>
                         <FormControl>
                           <Tabs
                             value={field.value}
@@ -185,13 +191,13 @@ export default function Editor() {
                           >
                             <TabsList>
                               <TabsTrigger value="start">
-                                <MdAlignVerticalTop />
+                                <RxAlignTop />
                               </TabsTrigger>
                               <TabsTrigger value="center">
-                                <MdAlignVerticalCenter />
+                                <RxAlignCenterVertically />
                               </TabsTrigger>
                               <TabsTrigger value="end">
-                                <MdAlignVerticalBottom />
+                                <RxAlignBottom />
                               </TabsTrigger>
                             </TabsList>
                           </Tabs>

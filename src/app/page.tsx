@@ -1,6 +1,9 @@
 import { buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
 
+import config from "../../next.config.mjs";
+const BASE_PATH = config.basePath ?? "";
+
 import Link from "next/link";
 
 export default function Home() {
@@ -24,93 +27,103 @@ export default function Home() {
           </div>
           <div className="flex flex-wrap gap-4">
             <Image
-              src="/sticker-awesome.svg"
+              src={`${BASE_PATH}/sticker-awesome.svg`}
               alt="awesome"
               width="200"
               height="100"
             />
-            <Image src="/sticker-100.svg" alt="100" width="100" height="100" />
             <Image
-              src="/sticker-nice.svg"
+              src={`${BASE_PATH}/sticker-100.svg`}
+              alt="100"
+              width="100"
+              height="100"
+            />
+            <Image
+              src={`${BASE_PATH}/sticker-nice.svg`}
               alt="nice"
               width="100"
               height="100"
             />
-            <Image src="/sticker-wow.svg" alt="wow" width="100" height="100" />
             <Image
-              src="/sticker-supercool.svg"
+              src={`${BASE_PATH}/sticker-wow.svg`}
+              alt="wow"
+              width="100"
+              height="100"
+            />
+            <Image
+              src={`${BASE_PATH}/sticker-supercool.svg`}
               alt="super-cool"
               width="100"
               height="100"
             />
             <Image
-              src="/sticker-pien.svg"
+              src={`${BASE_PATH}/sticker-pien.svg`}
               alt="pien"
               width="100"
               height="100"
             />
             <Image
-              src="/sticker-ohmygod.svg"
+              src={`${BASE_PATH}/sticker-ohmygod.svg`}
               alt="oh-my-god"
               width="100"
               height="100"
             />
             <Image
-              src="/sticker-heart.svg"
+              src={`${BASE_PATH}/sticker-heart.svg`}
               alt="heart"
               width="100"
               height="100"
             />
             <Image
-              src="/sticker-perfect.svg"
+              src={`${BASE_PATH}/sticker-perfect.svg`}
               alt="perfect"
               width="100"
               height="100"
             />
             <Image
-              src="/sticker-cool.svg"
+              src={`${BASE_PATH}/sticker-cool.svg`}
               alt="cool"
               width="100"
               height="100"
             />
             <Image
-              src="/sticker-suteki.svg"
+              src={`${BASE_PATH}/sticker-suteki.svg`}
               alt="suteki"
               width="200"
               height="100"
             />
             <Image
-              src="/sticker-bravo.svg"
+              src={`${BASE_PATH}/sticker-bravo.svg`}
               alt="bravo"
               width="100"
               height="100"
             />
             <Image
-              src="/sticker-wink.svg"
+              src={`${BASE_PATH}/sticker-wink.svg`}
               alt="wink"
               width="100"
               height="100"
             />
             <Image
-              src="/sticker-unbelievable.svg"
+              src={`${BASE_PATH}/sticker-unbelievable.svg`}
               alt="unbelievable"
               width="200"
               height="100"
             />
             <Image
-              src="/sticker-brilliant.svg"
-              alt="brilliant sticker"
+              src={`${BASE_PATH}/sticker-brilliant.svg`}
+              alt="brilliant"
               width="100"
               height="100"
             />
             <Image
-              src="/sticker-good.svg"
+              src={`${BASE_PATH}/sticker-good.svg`}
               alt="good"
               width="100"
               height="100"
             />
             <Image
-              src="/sticker-kanpeki.svg"
+              src={`${BASE_PATH}/sticker-kanpeki.svg`}
               alt="完璧"
               width="100"
               height="100"

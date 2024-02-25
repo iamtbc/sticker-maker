@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Footer = () => {
   return (
     <>
@@ -25,18 +27,18 @@ const Footer = () => {
             .
           </p>
           <span>
-            <a
+            <Link
               href="/terms"
               className="text-gray-500 text-sm underline underline-offset-4"
             >
               利用規約
-            </a>
-            <a
+            </Link>
+            <Link
               href="privacy"
               className="ml-3 text-gray-500 text-sm underline underline-offset-4"
             >
               プライバシーポリシー
-            </a>
+            </Link>
           </span>
         </div>
       </footer>
